@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebPackageArchitecture>amd64</DebPackageArchitecture>
+    <PackagePrefix>devunity</PackagePrefix>
+    <PackageName>devunity-0.1.0</PackageName>
+    <Version>0.1.0</Version>
+    <Authors>Rudra Saraswat</Authors>
+    <Company>Unity7 Maintainers</Company>
+    <Product>Devunity</Product>
+    <Description>A debugging tool for Unity7</Description>
+  </PropertyGroup>
+
+</Project>
