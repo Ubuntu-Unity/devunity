@@ -35,7 +35,7 @@ namespace devunity.components
                     file.WriteLine();
                     Console.WriteLine("Please enter the affected Unity7 program (if you do not know, please type 'dunno'):");
                     string affectedProgram = Console.ReadLine();
-                    if (!affectedProgram.Contains("unity")) {
+                    if (!affectedProgram.Contains("unity") && (!(affectedProgram == "dunno"))) {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("ERROR: NOT A UNITY BUG");
                         Environment.Exit(-1);
@@ -57,7 +57,7 @@ namespace devunity.components
         }
 
         public static void openLaunchpad(string pName) {
-            if ((pName == "dunno") || (pName == "'dunno'"))
+            if (pName == "dunno")
             {
                 Process.Start("xdg-open", "https://bugs.launchpad.net/ubuntu/+filebug?no-redirect");
             }
