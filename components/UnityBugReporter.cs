@@ -1,6 +1,7 @@
 // System libraries
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.IO;
 
 namespace devunity.components
@@ -32,16 +33,37 @@ namespace devunity.components
                     file.WriteLine("BUG DETAILS -->");
                     file.WriteLine(bugDetails);
                     file.WriteLine();
-                    Console.WriteLine("Please enter the affected Unity7 program (if you do not know, please type 'do not know'):");
+                    Console.WriteLine("Please enter the affected Unity7 program (if you do not know, please type 'dunno'):");
                     string affectedProgram = Console.ReadLine();
-                    file.WriteLine("AFFECTED PROGRAM -->");
+                    if (!affectedProgram.Contains("unity")) {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("ERROR: NOT A UNITY BUG");
+                        Environment.Exit(-1);
+                    }
+                    file.WriteLine("AFFECTED PACKAGE -->");
                     file.WriteLine(affectedProgram);
-                    Console.WriteLine("Please send the file (or its contents): " + fileToWrite + " when reporting the bug.");
+                    Console.WriteLine("Do you want to report the bug now? (^C to cancel - ENTER to proceed) ");
+                    Console.ReadLine();
+                    Console.WriteLine("Redirecting to the Bug Reporter in 5 seconds. Please attach this file: " + fileToWrite + " when reporting the bug. If it gives the error 'Lost something?', make sure you entered the correct package name.");
+                    Thread.Sleep(5000);
+                    openLaunchpad(affectedProgram);
                 }
-            } catch {
+            }
+            catch (Exception e) {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("ERROR: FAILED");
+                Console.WriteLine("ERROR: FAILED: " + e.Message);
                 Environment.Exit(-1);
+            }
+        }
+
+        public static void openLaunchpad(string pName) {
+            if ((pName == "dunno") || (pName == "'dunno'"))
+            {
+                Process.Start("xdg-open", "https://bugs.launchpad.net/ubuntu/+filebug?no-redirect");
+            }
+            else if (pName.Contains("unity"))
+            {
+                Process.Start("xdg-open", "https://bugs.launchpad.net/ubuntu/+source/" + pName + "/+filebug?no-redirect");
             }
         }
     }

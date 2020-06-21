@@ -11,6 +11,7 @@ namespace devunity.components
         {
             Console.Write("Process to get status of: ");
             string pName = Console.ReadLine();
+            Console.WriteLine();
             if (pName.Contains("unity"))
             {
                 try
@@ -19,7 +20,6 @@ namespace devunity.components
                     foreach (Process p in pArray)
                     {
                         Console.WriteLine($"{pName}:");
-                        Console.WriteLine();
                         Console.WriteLine($"  Process ID                : {p.Id}");
                         Console.WriteLine($"  Physical memory usage     : {p.WorkingSet64}");
                         Console.WriteLine($"  User processor time       : {p.UserProcessorTime}");
