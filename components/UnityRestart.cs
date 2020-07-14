@@ -9,7 +9,7 @@ namespace devunity.components
         // Main function
         public static void RestartUnity()
         {
-            Console.Write("Are you sure? Some apps might close. In a dual monitor setup, some apps might move to the other display. To proceed, press ENTER, and to cancel, press ^C.");
+            Console.Write("Are you sure? This may disrupt some running apps. In a dual monitor setup, some apps might move to the other display. To proceed, press ENTER, and to cancel, press ^C.");
             Console.ReadLine();
 
             new Process()
