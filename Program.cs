@@ -43,6 +43,14 @@ namespace devunity
                             UnityRestart.RestartUnity();
                             break;
 
+                        case "-rl": case "--restart-lightdm":
+                            UnityLightDMControl.LightDMRestart();
+                            break;
+
+                        case "-sl": case "--stop-lightdm":
+                            UnityLightDMControl.LightDMStop();
+                            break;
+
                         case "-gp": case "--get-process-status":
                             UnityProcessStatus.ProcessStatus();
                             break;
@@ -54,7 +62,9 @@ namespace devunity
                     }
                 }
             else
-                Console.WriteLine("Devunity is a program for debugging Unity7.\n\nSYNTAX:\n\n\tdevunity ARGUMENT\n\nwhere ARGUMENT stands for one of the following:\n\n\t-pm | --process-monitor: Unity Process Monitor\n\n\t-rb | --report-bug: Unity Bug Report Generator\n\n\t-ru | --restart-unity: Restart Unity\n\n\t-gp | --get-process-status: Detailed Process Status");
+            {
+                Console.WriteLine("Devunity is a program for debugging Unity7.\n\nSYNTAX:\n\n\tdevunity ARGUMENT\n\nwhere ARGUMENT stands for one of the following:\n\n\t-pm | --process-monitor: Unity Process Monitor\n\n\t-rb | --report-bug: Unity Bug Report Generator\n\n\t-ru | --restart-unity: Restart Unity\n\n\t-gp | --get-process-status: Detailed Process Status\n\n\t-rl | --restart-lightdm: Restart Lightdm\n\n\t-sl | --stop-lightdm: Stop LightDM");return 1;
+            }
 
             return 0;
         }
