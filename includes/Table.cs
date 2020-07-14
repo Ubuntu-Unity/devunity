@@ -8,7 +8,7 @@ namespace devunity.includes
 
         public static void PrintLine()
         {
-            Console.WriteLine(new string('-', tableWidth));
+            Console.WriteLine(new string('-', tableWidth+1));
         }
 
         public static void PrintRow(params string[] columns)
